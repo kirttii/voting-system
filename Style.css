@@ -1,278 +1,334 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
-
+/* ===== GLOBAL RESET & BASE STYLES ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+.roll-label{
+  color:white;
+  font-size:0.9rem;
+  margin-bottom:5px;
+  display:block;
+}
+/* 🔹 Roll number container */
+.roll-box {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* 🔹 Input styling */
+#roll {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 500;
+
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  backdrop-filter: blur(10px);
+
+  transition: all 0.3s ease;
+}
+
+/* 🔹 Placeholder color */
+#roll::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* 🔥 Focus effect (very important) */
+#roll:focus {
+  border: 2px solid white;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
+/* 🔹 Mobile optimization */
+@media (max-width: 600px) {
+  #roll {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+}
 
 body {
-  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2.5rem 1.5rem;
-  
-  /* Clean, professional gradient - slate to navy */
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1e1b4b 100%);
-  background-attachment: fixed;
+  padding: 2rem 1.5rem;
 }
 
-/* ===== HEADING ===== */
+/* ===== HEADER STYLES ===== */
 h1 {
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  font-weight: 700;
-  color: #ffffff;
   text-align: center;
-  letter-spacing: -0.3px;
-  margin-bottom: 2rem;
-  background: linear-gradient(135deg, #ffffff, #cbd5e1);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.5px;
+  word-break: keep-all;
 }
 
-/* ===== ROLL NUMBER — properly aligned above grid ===== */
-.roll-box {
-  width: min(480px, 100%);
-  margin: 0 auto 2rem;
-}
-
-.roll-label {
-  display: block;
-  color: #94a3b8;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 8px;
-}
-
-#roll {
-  width: 100%;
-  padding: 14px 20px;
-  border-radius: 12px;
-  border: 1.5px solid #334155;
-  outline: none;
-  font-size: 0.95rem;
-  font-weight: 500;
-  font-family: 'Poppins', sans-serif;
-  background: #1e293b;
-  color: #f1f5f9;
-  transition: all 0.2s ease;
-}
-
-#roll::placeholder {
-  color: #64748b;
-}
-
-#roll:focus {
-  border-color: #6366f1;
-  background: #0f172a;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-}
-
-/* ===== FORM — 4 equal columns with perfect alignment ===== */
+/* ===== FORM CONTAINER (FLEX GRID) ===== */
 form {
+  max-width: 1400px;
   width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
   background: transparent;
+  padding: 0.5rem;
 }
 
-/* ===== LABEL wrapper ===== */
+/* ===== CARD LABEL (each option) ===== */
 label {
+  flex: 1 1 220px;
+  min-width: 200px;
+  max-width: 280px;
   cursor: pointer;
-  display: block;
+  transition: all 0.25s ease;
+  position: relative;
 }
 
+/* Hide default radio button but keep accessible */
 label input[type="radio"] {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
+  margin: 0;
 }
 
-/* ===== CARD - clean, minimal, perfectly aligned ===== */
+/* ===== CARD DESIGN - Glassmorphism / Transparent ===== */
 .card {
-  position: relative;
-  background: #1e293b;
-  border-radius: 20px;
-  border: 1px solid #334155;
-  padding: 2rem 1rem;
-  min-height: 280px;
-  
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  border-radius: 28px;
+  padding: 1.8rem 1rem 2rem 1rem;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  text-align: center;
-  
-  transition: all 0.25s ease;
+  gap: 1.2rem;
 }
 
-/* ===== LOGO - consistent sizing ===== */
+/* logo image sizing – bigger and crisp */
 .logo {
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   object-fit: contain;
-  flex-shrink: 0;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
   transition: transform 0.2s ease;
 }
 
-/* ===== PARTY NAME ===== */
+/* Party name typography – larger text */
 .card span {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #e2e8f0;
-  line-height: 1.4;
-  transition: color 0.2s ease;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.3px;
+  display: inline-block;
+  padding: 0 0.2rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* ===== HOVER - subtle and professional ===== */
+/* ===== HOVER EFFECTS: GOLDEN BORDER + SCALE ===== */
 label:hover .card {
-  border-color: #6366f1;
-  background: #2d3a4f;
-  transform: translateY(-2px);
+  border: 2px solid #ffd700;
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 25px 35px -12px rgba(255, 215, 0, 0.4);
+  transform: translateY(-6px);
 }
 
 label:hover .logo {
   transform: scale(1.05);
 }
 
+/* GOLDEN TEXT on hover */
 label:hover .card span {
-  color: #a5b4fc;
+  color: #ffd700;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
 }
 
-/* ===== SELECTED - clean accent ===== */
+/* ===== SELECTED (CHECKED) STATE: PREMIUM GOLDEN BORDER + GLOW ===== */
 label input[type="radio"]:checked + .card {
-  border: 2px solid #6366f1;
-  background: #2d3a4f;
-  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
-}
-
-/* Checkmark badge - clean and minimal */
-label input[type="radio"]:checked + .card::after {
-  content: '✓';
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 24px;
-  height: 24px;
-  background: #6366f1;
-  color: white;
-  border-radius: 50%;
-  font-size: 0.8rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border: 2px solid #ffc107;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.4), 0 12px 28px rgba(0, 0, 0, 0.3);
 }
 
 label input[type="radio"]:checked + .card span {
-  color: #a5b4fc;
-  font-weight: 600;
+  color: #ffd700;
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
 }
 
-/* ===== SUBMIT BUTTON — spans full grid width ===== */
+label input[type="radio"]:checked + .card .logo {
+  filter: drop-shadow(0 0 10px rgba(255, 193, 7, 0.6));
+}
+
+/* ===== SUBMIT BUTTON (premium, voter style) ===== */
 button {
-  grid-column: 1 / -1;
-  justify-self: center;
-  padding: 0.9rem 2.5rem;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255, 215, 0, 0.6);
+  padding: 1rem 2.5rem;
+  font-size: 1.35rem;
+  font-weight: bold;
   color: white;
-  background: #6366f1;
-  border: none;
-  border-radius: 40px;
+  border-radius: 60px;
   cursor: pointer;
-  min-width: 200px;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-  margin-top: 0.5rem;
+  transition: 0.2s;
+  margin-top: 2.5rem;
+  width: auto;
+  min-width: 220px;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
-  background: #4f46e5;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+  background: rgba(255, 215, 0, 0.3);
+  border-color: #ffd700;
+  color: #ffd700;
+  transform: scale(1.02);
+  box-shadow: 0 12px 25px -8px rgba(255, 215, 0, 0.4);
 }
 
 button:active {
   transform: scale(0.98);
 }
 
-/* ===== STATUS ===== */
+/* ===== STATUS MESSAGE ===== */
 #status {
   text-align: center;
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
+  margin-top: 2rem;
+  font-size: 1.15rem;
   font-weight: 500;
-  padding: 0.6rem 1.5rem;
-  border-radius: 40px;
-  color: #cbd5e1;
-  background: #1e293b;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  color: white;
+  border-left: 4px solid #ffd700;
   max-width: 90%;
   word-break: break-word;
 }
 
-/* ===== RESPONSIVE ===== */
-
-/* Tablet: 2 columns */
-@media (max-width: 900px) {
-  form {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 650px;
-    gap: 1.2rem;
-  }
-}
-
-/* Mobile: 2 columns with adjusted spacing */
-@media (max-width: 560px) {
+/* ===== RESPONSIVE: PHONE / IPHONE (small devices) ===== */
+@media (max-width: 768px) {
   body {
-    padding: 1.5rem 1rem;
+    padding: 1rem;
   }
-  
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1.8rem;
+  }
+
   form {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    max-width: 100%;
+    gap: 1.3rem;
+  }
+
+  label {
+    flex: 1 1 160px;
+    min-width: 160px;
+    max-width: 240px;
   }
 
   .card {
-    min-height: 230px;
-    padding: 1.5rem 0.8rem;
-    border-radius: 16px;
+    padding: 1.2rem 0.8rem 1.4rem 0.8rem;
+    gap: 0.8rem;
   }
 
-  .logo { 
-    width: 70px; 
-    height: 70px; 
+  .logo {
+    width: 85px;
+    height: 85px;
+  }
+
+  .card span {
+    font-size: 1.1rem;
+  }
+
+  button {
+    padding: 0.75rem 1.8rem;
+    font-size: 1.2rem;
+    margin-top: 1.8rem;
   }
   
-  .card span { 
-    font-size: 0.85rem; 
+  #status {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+/* For iPhone SE / small fold */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.65rem;
   }
   
-  button { 
-    font-size: 0.9rem; 
-    padding: 0.7rem 1.8rem; 
+  .logo {
+    width: 70px;
+    height: 70px;
   }
   
-  h1 { 
-    font-size: 1.5rem; 
-    margin-bottom: 1.5rem;
+  .card span {
+    font-size: 1rem;
   }
   
-  .roll-box {
-    margin-bottom: 1.5rem;
+  .card {
+    padding: 1rem 0.6rem 1.2rem 0.6rem;
   }
+  
+  button {
+    font-size: 1rem;
+    padding: 0.6rem 1.4rem;
+  }
+}
+
+/* Laptop & larger screens optimization */
+@media (min-width: 1024px) {
+  .logo {
+    width: 130px;
+    height: 130px;
+  }
+  
+  .card span {
+    font-size: 1.6rem;
+  }
+  
+  .card {
+    padding: 2rem 1rem 2.2rem 1rem;
+  }
+  
+  label {
+    max-width: 310px;
+  }
+}
+
+/* ensures all cards same height & alignment */
+.card {
+  justify-content: center;
+  min-height: 270px;
+}
+
+/* perfect alignment for text + image + spacing */
+.card span {
+  line-height: 1.3;
+  margin-top: 0.2rem;
 }
