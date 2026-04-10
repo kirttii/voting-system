@@ -11,7 +11,7 @@
 /* ===== BODY ===== */
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #5f2c82, #49a09d);
+  background: linear-gradient(135deg, #667eea, #764ba2);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,9 +28,9 @@ h1 {
 
 /* ===== ROLL INPUT ===== */
 .roll-box {
-  width: 100%;
-  max-width: 350px;
-  margin-bottom: 20px;
+grid-column:span 2;
+  max-width: 700px;
+  margin-bottom: 10px;
 }
 
 #roll {
@@ -46,10 +46,10 @@ h1 {
 form {
   width: 100%;
   max-width: 600px;
-
+margin:0 auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2x2 layout */
-  gap: 15px;
+  gap: 20px;
 }
 
 /* ===== CARD ===== */
@@ -62,9 +62,9 @@ input[type="radio"] {
 }
 
 .card {
-  background: white;
-  border-radius: 15px;
+
   padding: 20px;
+ min-height:180px;
   text-align: center;
   transition: 0.3s;
   border: 2px solid transparent;
@@ -98,13 +98,11 @@ input[type="radio"]:checked + .card {
 button {
   grid-column: span 2; /* full width */
   padding: 12px;
-  border: none;
-  border-radius: 10px;
-  background: #5f2c82;
-  color: white;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-top: 10px;
+ max-width:300px;
+ width:100%;
+ display:block;
+ margin:20px auto 0;
+ 
 }
 
 button:hover {
@@ -118,10 +116,16 @@ button:hover {
 }
 
 /* ===== MOBILE ===== */
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   form {
     grid-template-columns: 1fr; /* 1 per row */
   }
+ .roll-box{
+  grid-column:span 1;}
+ button{
+  grid-column:span 1;
+ }
+}
 
   button {
     grid-column: span 1;
