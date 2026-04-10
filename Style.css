@@ -14,6 +14,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 20px;
+ justify-content:center;
 }
 
 /* ===== TITLE ===== */
@@ -25,9 +26,9 @@ h1 {
 
 /* ===== ROLL INPUT ===== */
 .roll-box {
-  width: 100%;
-  max-width: 500px;
-  margin-bottom: 15px;
+
+  max-width: 300px;
+  margin-bottom: 20px;
 }
 
 #roll {
@@ -42,11 +43,12 @@ h1 {
 /* ===== FORM GRID ===== */
 form {
   width: 100%;
-  max-width: 900px;
+  max-width: 1000px;
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+ justify-content:center;
 }
 
 /* ===== CARD WRAPPER ===== */
@@ -60,7 +62,7 @@ input[type="radio"] {
 
 /* ===== GLASS CARD ===== */
 .card {
-  height: 180px;
+  height: 200px;
   border-radius: 25px;
 
   background: rgba(255, 255, 255, 0.1);
@@ -117,6 +119,9 @@ button {
 
   cursor: pointer;
   transition: 0.3s;
+ width:60%;
+ margin:20px auto;
+ display:block;
 }
 
 button:hover {
