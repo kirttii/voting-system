@@ -1,61 +1,14 @@
+
 /* ===== GLOBAL RESET & BASE STYLES ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-.roll-label{
-  color:white;
-  font-size:0.9rem;
-  margin-bottom:5px;
-  display:block;
-}
-/* 🔹 Roll number container */
-.roll-box {
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-/* 🔹 Input styling */
-#roll {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 12px;
-  border: 2px solid transparent;
-  outline: none;
-  font-size: 1rem;
-  font-weight: 500;
-
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  backdrop-filter: blur(10px);
-
-  transition: all 0.3s ease;
-}
-
-/* 🔹 Placeholder color */
-#roll::placeholder {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-/* 🔥 Focus effect (very important) */
-#roll:focus {
-  border: 2px solid white;
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 10px rgba(255,255,255,0.6);
-}
-
-/* 🔹 Mobile optimization */
-@media (max-width: 600px) {
-  #roll {
-    font-size: 0.95rem;
-    padding: 12px;
-  }
-}
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(125deg, #e0e7ff 0%, #c7d2fe 100%);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -67,39 +20,92 @@ body {
 /* ===== HEADER STYLES ===== */
 h1 {
   text-align: center;
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  color: white;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  margin-bottom: 2.5rem;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 2rem;
   letter-spacing: -0.5px;
-  word-break: keep-all;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
 
-/* ===== FORM CONTAINER (FLEX GRID) ===== */
+h1 i {
+  color: #3b82f6;
+  font-size: 2.2rem;
+}
+
+/* ===== ROLL NUMBER SECTION - FIXED POSITIONING ===== */
+.roll-box {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 1.5rem auto;
+  background: white;
+  padding: 1rem 1.5rem;
+  border-radius: 60px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.roll-label {
+  color: #1e293b;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+
+#roll {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 40px;
+  border: 1.5px solid #e2e8f0;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 500;
+  background: white;
+  color: #1e293b;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+#roll::placeholder {
+  color: #94a3b8;
+}
+
+#roll:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* ===== FORM CONTAINER ===== */
 form {
-  max-width: 1400px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.8rem;
   background: transparent;
   padding: 0.5rem;
 }
 
-/* ===== CARD LABEL (each option) ===== */
+/* ===== CARD LABEL ===== */
 label {
   flex: 1 1 220px;
   min-width: 200px;
-  max-width: 280px;
+  max-width: 260px;
   cursor: pointer;
   transition: all 0.25s ease;
   position: relative;
 }
 
-/* Hide default radio button but keep accessible */
 label input[type="radio"] {
   position: absolute;
   opacity: 0;
@@ -108,187 +114,192 @@ label input[type="radio"] {
   margin: 0;
 }
 
-/* ===== CARD DESIGN - Glassmorphism / Transparent ===== */
+/* ===== CARD DESIGN - Clean & Professional ===== */
 .card {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(10px);
-  border-radius: 28px;
+  background: white;
+  border-radius: 24px;
   padding: 1.8rem 1rem 2rem 1rem;
   text-align: center;
   transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-  border: 1.5px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.3);
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1rem;
 }
 
-/* logo image sizing – bigger and crisp */
+/* Logo image styling */
 .logo {
-  width: 110px;
-  height: 110px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
   display: block;
   margin: 0 auto;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
   transition: transform 0.2s ease;
 }
 
-/* Party name typography – larger text */
+/* Party name typography */
 .card span {
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  color: white;
+  color: #1e293b;
   letter-spacing: 0.3px;
   display: inline-block;
-  padding: 0 0.2rem;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* ===== HOVER EFFECTS: GOLDEN BORDER + SCALE ===== */
+/* ===== HOVER EFFECTS ===== */
 label:hover .card {
-  border: 2px solid #ffd700;
-  background: rgba(255, 255, 255, 0.22);
-  box-shadow: 0 25px 35px -12px rgba(255, 215, 0, 0.4);
-  transform: translateY(-6px);
+  border-color: #3b82f6;
+  box-shadow: 0 12px 28px rgba(59, 130, 246, 0.15);
+  transform: translateY(-4px);
 }
 
 label:hover .logo {
   transform: scale(1.05);
 }
 
-/* GOLDEN TEXT on hover */
 label:hover .card span {
-  color: #ffd700;
-  text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+  color: #2563eb;
 }
 
-/* ===== SELECTED (CHECKED) STATE: PREMIUM GOLDEN BORDER + GLOW ===== */
+/* ===== SELECTED (CHECKED) STATE ===== */
 label input[type="radio"]:checked + .card {
-  border: 2px solid #ffc107;
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.4), 0 12px 28px rgba(0, 0, 0, 0.3);
+  border: 2px solid #2563eb;
+  background: #eff6ff;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
 }
 
 label input[type="radio"]:checked + .card span {
-  color: #ffd700;
+  color: #1e40af;
   font-weight: 800;
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
 }
 
 label input[type="radio"]:checked + .card .logo {
-  filter: drop-shadow(0 0 10px rgba(255, 193, 7, 0.6));
+  filter: drop-shadow(0 4px 8px rgba(37, 99, 235, 0.3));
 }
 
-/* ===== SUBMIT BUTTON (premium, voter style) ===== */
+/* ===== SUBMIT BUTTON ===== */
 button {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
-  backdrop-filter: blur(10px);
-  border: 1.5px solid rgba(255, 215, 0, 0.6);
-  padding: 1rem 2.5rem;
-  font-size: 1.35rem;
-  font-weight: bold;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  border: none;
+  padding: 0.9rem 2.5rem;
+  font-size: 1.15rem;
+  font-weight: 600;
   color: white;
   border-radius: 60px;
   cursor: pointer;
-  transition: 0.2s;
-  margin-top: 2.5rem;
+  transition: all 0.2s ease;
+  margin-top: 2rem;
   width: auto;
   min-width: 220px;
-  letter-spacing: 1px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+button i {
+  font-size: 1.1rem;
 }
 
 button:hover {
-  background: rgba(255, 215, 0, 0.3);
-  border-color: #ffd700;
-  color: #ffd700;
-  transform: scale(1.02);
-  box-shadow: 0 12px 25px -8px rgba(255, 215, 0, 0.4);
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
 }
 
 button:active {
-  transform: scale(0.98);
+  transform: translateY(0px);
 }
 
 /* ===== STATUS MESSAGE ===== */
 #status {
   text-align: center;
   margin-top: 2rem;
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 500;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px);
+  background: white;
   display: inline-block;
   padding: 0.8rem 1.8rem;
-  border-radius: 50px;
-  color: white;
-  border-left: 4px solid #ffd700;
+  border-radius: 60px;
+  color: #1e293b;
+  border-left: 4px solid #3b82f6;
   max-width: 90%;
   word-break: break-word;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* ===== RESPONSIVE: PHONE / IPHONE (small devices) ===== */
+/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
   body {
-    padding: 1rem;
+    padding: 1.5rem;
   }
 
   h1 {
     font-size: 2rem;
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .roll-box {
+    max-width: 100%;
+    margin-bottom: 1.2rem;
   }
 
   form {
-    gap: 1.3rem;
+    gap: 1.2rem;
   }
 
   label {
-    flex: 1 1 160px;
+    flex: 1 1 170px;
     min-width: 160px;
-    max-width: 240px;
+    max-width: 220px;
   }
 
   .card {
-    padding: 1.2rem 0.8rem 1.4rem 0.8rem;
+    padding: 1.3rem 0.8rem 1.5rem 0.8rem;
     gap: 0.8rem;
   }
 
   .logo {
-    width: 85px;
-    height: 85px;
+    width: 75px;
+    height: 75px;
   }
 
   .card span {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   button {
-    padding: 0.75rem 1.8rem;
-    font-size: 1.2rem;
-    margin-top: 1.8rem;
+    padding: 0.7rem 1.8rem;
+    font-size: 1rem;
+    margin-top: 1.5rem;
   }
   
   #status {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     padding: 0.6rem 1.2rem;
   }
 }
 
-/* For iPhone SE / small fold */
 @media (max-width: 480px) {
   h1 {
-    font-size: 1.65rem;
+    font-size: 1.6rem;
+  }
+  
+  h1 i {
+    font-size: 1.6rem;
   }
   
   .logo {
-    width: 70px;
-    height: 70px;
+    width: 65px;
+    height: 65px;
   }
   
   .card span {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   
   .card {
@@ -296,39 +307,63 @@ button:active {
   }
   
   button {
-    font-size: 1rem;
+    font-size: 0.9rem;
     padding: 0.6rem 1.4rem;
+  }
+
+  .roll-box {
+    padding: 0.8rem 1.2rem;
+  }
+
+  #roll {
+    padding: 8px 14px;
+    font-size: 0.9rem;
   }
 }
 
-/* Laptop & larger screens optimization */
 @media (min-width: 1024px) {
   .logo {
-    width: 130px;
-    height: 130px;
+    width: 110px;
+    height: 110px;
   }
   
   .card span {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
   
   .card {
-    padding: 2rem 1rem 2.2rem 1rem;
+    padding: 2rem 1rem 2rem 1rem;
   }
   
   label {
-    max-width: 310px;
+    max-width: 280px;
   }
 }
 
-/* ensures all cards same height & alignment */
+/* Ensure consistent card height */
 .card {
   justify-content: center;
-  min-height: 270px;
+  min-height: 250px;
 }
 
-/* perfect alignment for text + image + spacing */
-.card span {
-  line-height: 1.3;
-  margin-top: 0.2rem;
+/* Fix roll number alignment - no more shifting */
+.roll-box {
+  position: relative;
+  z-index: 1;
+}
+
+/* Add subtle animation for status updates */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#status {
+  animation: fadeIn 0.3s ease-out;
 }
