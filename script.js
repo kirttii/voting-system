@@ -11,6 +11,12 @@ function submitVote() {
   errorBox.innerText = "";
   rollInput.classList.remove("input-error");
 
+  // 🔒 DEVICE LOCK CHECK (FIRST THING)
+  if (localStorage.getItem("hasVoted") === "true") {
+    errorBox.innerText = "❌ This device has already voted!";
+    return;
+  }
+
   // ✅ STRICT ROLL VALIDATION
   let pattern = /^(25104|25108)[AB]\d{4}$/;
 
@@ -27,18 +33,15 @@ function submitVote() {
     return;
   }
 
-  // 🔒 DEVICE LOCK (one vote per device)
-  if (localStorage.getItem("hasVoted") === "true") {
-    errorBox.innerText = "❌ This device has already voted!";
-    return;
-  }
-
   // 🔒 GENERATE / GET DEVICE ID
   let deviceID = localStorage.getItem("deviceID");
   if (!deviceID) {
     deviceID = "DEV-" + Math.random().toString(36).substr(2, 9);
     localStorage.setItem("deviceID", deviceID);
   }
+
+  // 🔐 LOCK DEVICE IMMEDIATELY (IMPORTANT FIX)
+  localStorage.setItem("hasVoted", "true");
 
   // 🔘 Disable button (prevent spam)
   btn.disabled = true;
@@ -62,6 +65,9 @@ function submitVote() {
       errorBox.innerText = "❌ This Roll Number has already voted!";
       btn.disabled = false;
       btn.innerText = "Submit Vote";
+
+      // 🔓 Unlock device (since vote failed)
+      localStorage.removeItem("hasVoted");
       return;
     }
 
@@ -76,13 +82,13 @@ function submitVote() {
     // ✅ SUCCESS
     statusBox.innerText = "✅ Vote submitted successfully!";
     btn.innerText = "Vote Submitted";
-
-    // Lock device
-    localStorage.setItem("hasVoted", "true");
   })
   .catch(() => {
     statusBox.innerText = "❌ Error submitting vote!";
     btn.disabled = false;
     btn.innerText = "Submit Vote";
+
+    // 🔓 Unlock if error happens
+    localStorage.removeItem("hasVoted");
   });
 }
