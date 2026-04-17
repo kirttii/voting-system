@@ -1,5 +1,3 @@
-
-
 function submitVote() {
 
   const rollInput = document.getElementById("roll");
