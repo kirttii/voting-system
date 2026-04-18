@@ -43,31 +43,28 @@ function submitVote() {
     })
   })
   .then(res => res.text())
-  .then(data => {
+.then(data => {
+  console.log("Response:", data);
 
-    if (data.includes("Already voted")) {
-      errorBox.innerText = "❌ This Roll Number has already voted!";
-      btn.disabled = false;
-      btn.innerText = "Submit Vote";
-      return;
-    }
+  if (!data) {
+    statusBox.innerText = "❌ No response from server!";
+    return;
+  }
 
-    if (data.includes("Error")) {
-      statusBox.innerText = "❌ Server error!";
-      btn.disabled = false;
-      btn.innerText = "Submit Vote";
-      return;
-    }
-
-    // ✅ SUCCESS
-    statusBox.innerText = "✅ Vote submitted successfully!";
-    btn.innerText = "Vote Submitted";
-
-  })
-  .catch((err) => {
-    console.log(err);
-    statusBox.innerText = "❌ Error submitting vote!";
+  if (data.includes("Already voted")) {
+    errorBox.innerText = "❌ This Roll Number has already voted!";
     btn.disabled = false;
     btn.innerText = "Submit Vote";
-  });
-}
+    return;
+  }
+
+  if (data.includes("Error")) {
+    statusBox.innerText = "❌ Server error!";
+    btn.disabled = false;
+    btn.innerText = "Submit Vote";
+    return;
+  }
+
+  statusBox.innerText = "✅ Vote submitted successfully!";
+  btn.innerText = "Vote Submitted";
+})
