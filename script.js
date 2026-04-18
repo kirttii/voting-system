@@ -30,7 +30,7 @@ function submitVote() {
   document.getElementById("status").innerText = "Submitting your vote...";
 
   // 🌐 Send data to Google Apps Script
-  fetch("https://script.google.com/macros/s/AKfycbzYc__OoWiNM1i1levJOGEVOKGgvwB-ke3ptKOMfS702O7SK_r_uY9z9xHxBccxHAhI/exec", {
+  fetch("https://docs.google.com/spreadsheets/d/1mbZ_CdrMyD5G1Vg1fFj15Y45LO-DXEoVa2dUYrlbedE/edit?usp=sharing", {
     method: "POST",
     body: JSON.stringify({
       vote: selected.value,
