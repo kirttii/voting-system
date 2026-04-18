@@ -1,42 +1,58 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Voting System</title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet" href="Style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 
-<div class="container">
+<h1>🗳️ Cast Your Vote</h1>
 
-  <h1>🗳️ Cast Your Vote</h1>
+<form>
 
-  <!-- Roll Number -->
-  <div class="roll-box">
-    <input
-      type="text"
-      id="roll"
-      placeholder="Enter your Roll Number">
+<label>
+  <input type="radio" name="vote" value="Yuva Swaraj">
+  <div class="card">
+    <img src="images/yuva_swaraj.png" class="logo">
+    <span>Yuva Swaraj</span>
   </div>
+</label>
 
-  <!-- 🔴 ERROR MESSAGE (IMPORTANT ADD) -->
-  <p id="rollError" style="color:#ff4d4d; text-align:center; margin-bottom:15px;"></p>
+<label>
+  <input type="radio" name="vote" value="Janta Pragati Party">
+  <div class="card">
+    <img src="images/janta_pragati.png" class="logo">
+    <span>Janta Pragati Party</span>
+  </div>
+</label>
 
-  <form>
+<label>
+  <input type="radio" name="vote" value="Baddie Navnirman Sena">
+  <div class="card">
+    <img src="images/baddie_navnirman.png" class="logo">
+    <span>Baddie Navnirman Sena</span>
+  </div>
+</label>
 
-    <!-- PARTY 1 -->
-    <label>
-      <input type="radio" name="vote" value="Yuva Swaraj">
-      <div class="card">
-        <img src="images/yuva_swaraj.png" class="logo">
-        <span>Yuva Swaraj</span>
-      </div>
-    </label>
+<label>
+  <input type="radio" name="vote" value="Nav Yuva Party">
+  <div class="card">
+    <img src="images/nav_yuva.png" class="logo">
+    <span>Nav Yuva Party</span>
+  </div>
+</label>
 
-    <!-- PARTY 2 -->
-    <
+<br><br>
+
+<button type="button" onclick="submitVote()">Submit Vote</button>
+
+</form>
+
+<p id="status"></p>
+
+<script src="script.js"></script>
+
+</body>
+</html>
