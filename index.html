@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <title>Voting System</title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
+  <!-- IMPORTANT: match exact filename -->
+  <link rel="stylesheet" href="Style.css">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
     <label>
       <input type="radio" name="vote" value="Yuva Swaraj">
       <div class="card">
-        <img src="images/yuva.png" class="logo">
+        <img src="images/yuva_swaraj.png" class="logo">
         <span>Yuva Swaraj</span>
       </div>
     </label>
@@ -29,7 +29,7 @@
     <label>
       <input type="radio" name="vote" value="Janta Pragati Party">
       <div class="card">
-        <img src="images/janta.png" class="logo">
+        <img src="images/janta_pragati.png" class="logo">
         <span>Janta Pragati Party</span>
       </div>
     </label>
@@ -37,7 +37,7 @@
     <label>
       <input type="radio" name="vote" value="Baddie Navnirman Sena">
       <div class="card">
-        <img src="images/bns.png" class="logo">
+        <img src="images/baddie_navnirman.png" class="logo">
         <span>Baddie Navnirman Sena</span>
       </div>
     </label>
@@ -45,15 +45,17 @@
     <label>
       <input type="radio" name="vote" value="Nav Yuva Party">
       <div class="card">
-        <img src="images/nav.png" class="logo">
+        <img src="images/nav_yuva.png" class="logo">
         <span>Nav Yuva Party</span>
       </div>
     </label>
 
   </form>
 
+  <!-- Button -->
   <button onclick="submitVote()">Submit Vote</button>
 
+  <!-- Status -->
   <p id="status"></p>
 
   <!-- JS -->
