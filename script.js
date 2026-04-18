@@ -53,10 +53,7 @@ function submitVote() {
   document.getElementById("status").innerText = "Submitting your vote...";
 
   // 🌐 Send to backend
-  fetch("https://script.google.com/macros/s/AKfycbwamveEfyD_auKgOYEflWQCU0bijBePHOOmCAM7Utt1KR0aAqoq5eYtctzt3vm7tLMh/exec", {
-    method: "POST",
-    body: JSON.stringify({
-      vote: selected.value,
+  fetch("https://script.google.com/macros/s/AKfycbwamveEfyD_auKgOYEflWQCU0bijBePHOOmCAM7Utt1KR0aAqoq5eYtctzt3vm7tLMh/exechttps://script.google.com/macros/s/AKfycbwamveEfyD_auKgOYEflWQCU0bijBePHOOmCAM7Utt1KR0aAqoq5eYtctzt3vm7tLMh/execlected.value,
       roll: roll
     })
   })
