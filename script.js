@@ -44,7 +44,7 @@ function submitVote() {
   statusBox.innerText = "Submitting your vote...";
 
   // 🌐 SEND
-  fetch("https://script.google.com/macros/s/AKfycbzYc__OoWiNM1i1levJOGEVOKGgvwB-ke3ptKOMfS702O7SK_r_uY9z9xHxBccxHAhI/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbwamveEfyD_auKgOYEflWQCU0bijBePHOOmCAM7Utt1KR0aAqoq5eYtctzt3vm7tLMh/exec", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
