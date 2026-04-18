@@ -2,70 +2,61 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>College Voting System</title>
-<link rel="stylesheet" href="Style.css"> </head>
-  <style>
-    body {
-      font-family: Arial;
-      text-align: center;
-      padding: 30px;
-      background: #f5f5f5;
-    }
+  <title>Voting System</title>
 
-    .box {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      width: 300px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    input, button {
-      width: 90%;
-      padding: 10px;
-      margin: 10px 0;
-      font-size: 16px;
-    }
-
-    button {
-      background: #007bff;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    button:disabled {
-      background: gray;
-    }
-
-    #status {
-      margin-top: 15px;
-      font-weight: bold;
-    }
-  </style>
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <div class="box">
-    <h2>Vote Now</h2>
+  <h1>🗳️ Cast Your Vote</h1>
 
-    <input type="text" id="roll" placeholder="Enter Roll Number">
+  <!-- Roll Number -->
+  <input type="text" id="roll" placeholder="Enter Roll Number">
 
-    <div>
-      <label><input type="radio" name="vote" value="Party A"> Party A</label><br>
-      <label><input type="radio" name="vote" value="Party B"> Party B</label><br>
-      <label><input type="radio" name="vote" value="Party C"> Party C</label>
-    </div>
+  <!-- Voting Cards -->
+  <form>
 
-    <!-- IMPORTANT -->
-    <button type="button" onclick="submitVote()">Submit Vote</button>
+    <label>
+      <input type="radio" name="vote" value="Yuva Swaraj">
+      <div class="card">
+        <img src="images/yuva.png" class="logo">
+        <span>Yuva Swaraj</span>
+      </div>
+    </label>
 
-    <p id="status"></p>
-  </div>
+    <label>
+      <input type="radio" name="vote" value="Janta Pragati Party">
+      <div class="card">
+        <img src="images/janta.png" class="logo">
+        <span>Janta Pragati Party</span>
+      </div>
+    </label>
 
-  <!-- LINK JS HERE (VERY IMPORTANT) -->
+    <label>
+      <input type="radio" name="vote" value="Baddie Navnirman Sena">
+      <div class="card">
+        <img src="images/bns.png" class="logo">
+        <span>Baddie Navnirman Sena</span>
+      </div>
+    </label>
+
+    <label>
+      <input type="radio" name="vote" value="Nav Yuva Party">
+      <div class="card">
+        <img src="images/nav.png" class="logo">
+        <span>Nav Yuva Party</span>
+      </div>
+    </label>
+
+  </form>
+
+  <button onclick="submitVote()">Submit Vote</button>
+
+  <p id="status"></p>
+
+  <!-- JS -->
   <script src="script.js"></script>
 
 </body>
