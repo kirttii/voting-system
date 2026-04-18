@@ -1,65 +1,30 @@
-function submitVote() {
+function doGet(e) {
+  return ContentService.createTextOutput("Server is running");
+}
 
-  // 🔒 Prevent multiple votes from same browser
-  if (localStorage.getItem("voted")) {
-    alert("You have already voted!");
-    return;
-  }
+function doPost(e) {
+  try {
+    var data = JSON.parse(e.postData.contents);
 
-  // 🎯 Get selected party
-  let selected = document.querySelector('input[name="vote"]:checked');
+    var roll = data.roll;
+    var vote = data.vote;
 
-  if (!selected) {
-    alert("Please select a party!");
-    return;
-  }
+    var sheet = SpreadsheetApp.getActiveSheet();
+    var allData = sheet.getDataRange().getValues();
 
-  // 🆔 Get roll number
-  let roll = document.getElementById("roll").value.trim();
-
-  if (!roll) {
-    alert("Please enter your Roll Number!");
-    return;
-  }
-
-  // 🔘 Button control
-  const btn = document.querySelector("button");
-  btn.disabled = true;
-  btn.innerText = "Submitting...";
-
-  document.getElementById("status").innerText = "Submitting your vote...";
-
-  // 🌐 Send data to Google Apps Script
-  fetch("https://docs.google.com/spreadsheets/d/1mbZ_CdrMyD5G1Vg1fFj15Y45LO-DXEoVa2dUYrlbedE/edit?usp=sharing", {
-    method: "POST",
-    body: JSON.stringify({
-      vote: selected.value,
-      roll: roll
-    })
-  })
-  .then(response => response.text())
-  .then(data => {
-
-    // ✅ If already voted (from backend)
-    if (data === "Already voted") {
-      document.getElementById("status").innerText = "❌ This Roll Number has already voted!";
-      btn.disabled = false;
-      btn.innerText = "Submit Vote";
-      return;
+    // 🔒 Check duplicate roll
+    for (var i = 1; i < allData.length; i++) {
+      if (allData[i][1] == roll) {
+        return ContentService.createTextOutput("Already voted");
+      }
     }
 
-    // ✅ Success
-    document.getElementById("status").innerText = "✅ Vote submitted successfully!";
-    
-    // Save in browser
-    localStorage.setItem("voted", "true");
+    // ✅ Save vote
+    sheet.appendRow([new Date(), roll, vote]);
 
-    btn.innerText = "Vote Submitted";
+    return ContentService.createTextOutput("Success");
 
-  })
-  .catch(error => {
-    document.getElementById("status").innerText = "❌ Error submitting vote. Try again!";
-    btn.disabled = false;
-    btn.innerText = "Submit Vote";
-  });
+  } catch (err) {
+    return ContentService.createTextOutput("Error: " + err);
+  }
 }
