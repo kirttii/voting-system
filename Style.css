@@ -112,3 +112,24 @@ button {
     max-width: 900px;
   }
 }
+/* ===== ERROR + SHAKE EFFECT ===== */
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-6px); }
+  100% { transform: translateX(0); }
+}
+
+.input-error {
+  border: 2px solid #ff4d4d !important;
+  animation: shake 0.3s;
+}
+
+.error-text {
+  color: #ff4d4d;
+  font-size: 14px;
+  margin-top: 8px;
+  text-align: center;
+}
