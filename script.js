@@ -31,7 +31,7 @@ function submitVote() {
   btn.innerText = "Submitting...";
   statusBox.innerText = "Submitting your vote...";
 
-  fetch("https://script.google.com/macros/s/AKfycbwamveEfyD_auKgOYEflWQCU0bijBePHOOmCAM7Utt1KR0aAqoq5eYtctzt3vm7tLMh/exec", {
+  fetch("PASTE_YOUR_SCRIPT_URL_HERE", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -41,8 +41,10 @@ function submitVote() {
       vote: selected.value
     })
   })
-  .then(res => res.text())
-  .then(data => {
+  .then(function(res) {
+    return res.text();
+  })
+  .then(function(data) {
 
     console.log("Response:", data);
 
@@ -63,7 +65,7 @@ function submitVote() {
     statusBox.innerText = "✅ Vote submitted successfully!";
     btn.innerText = "Vote Submitted";
   })
-  .catch((err) => {
+  .catch(function(err) {
     console.log(err);
     statusBox.innerText = "❌ Error submitting vote!";
     btn.disabled = false;
